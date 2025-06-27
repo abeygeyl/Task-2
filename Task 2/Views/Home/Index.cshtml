@@ -1,8 +1,11 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewBag.Title = "Home";
 }
+<h2>Welcome to Book Haven!</h2>
+<p>Discover and explore your next favorite read.</p>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<nav>
+    <a href="@Url.Action("Index", "Home")">Home</a> |
+    <a href="@Url.Action("About", "Home")">About</a> |
+    <a href="@Url.Action("Books", "Home")">Books</a>
+</nav>

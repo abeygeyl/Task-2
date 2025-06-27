@@ -1,32 +1,32 @@
-using System.Diagnostics;
+using System.Collections.Generic;
+using BookHaven.Models;
 using Microsoft.AspNetCore.Mvc;
-using Task_2.Models;
 
-namespace Task_2.Controllers
+namespace BookHaven.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
-        public IActionResult Index()
+        public ActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        public ActionResult About()
         {
+            ViewBag.Message = "Welcome to Book Haven! Your cozy corner for literature.";
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public ActionResult Books()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var books = new List<Book>
+            {
+                new Book { Title = "1984", Author = "George Orwell", Year = 1949 },
+                new Book { Title = "The Hobbit", Author = "J.R.R. Tolkien", Year = 1937 },
+                new Book { Title = "To Kill a Mockingbird", Author = "Harper Lee", Year = 1960 }
+            };
+
+            return View(books);
         }
     }
 }
